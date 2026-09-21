@@ -263,7 +263,7 @@
           <span class="w-1 bg-gold-foil rounded-full h-3 eq-2"></span>
           <span class="w-1 bg-gold-glow rounded-full h-1 eq-3"></span>
         </div>
-        <span class="text-xs font-semibold text-gold-highlight" id="headerMusicLabel">نغم الحفل</span>
+        <span class="text-xs font-semibold text-gold-highlight" id="headerMusicLabel">أغنية الفرح</span>
       </button>
 
       <!-- Center Title in Calligraphy -->
@@ -363,7 +363,7 @@
             <div class="grid grid-cols-2 gap-3 w-full pt-2">
               <button class="flex items-center justify-center gap-2 py-3.5 px-3 rounded-2xl bg-deep-onyx border border-gold-foil/40 text-text-primary active:scale-95 hover:-translate-y-0.5 transition-all duration-200 shadow-lg group" id="audioControlBtn">
                 <span class="material-symbols-outlined text-gold-foil text-[20px] group-hover:scale-110 transition-transform" id="audioIcon">play_circle</span>
-                <span class="font-cairo text-xs font-bold" id="audioLabel">تشغيل النغم</span>
+                <span class="font-cairo text-xs font-bold" id="audioLabel">تشغيل الأغنية</span>
               </button>
 
               <a class="gold-shimmer-btn flex items-center justify-center gap-2 py-3.5 px-3 rounded-2xl bg-gradient-to-r from-gold-foil via-gold-highlight to-gold-foil text-night-charcoal font-bold text-xs active:scale-95 hover:-translate-y-0.5 transition-all duration-200 shadow-[0_4px_18px_rgba(212,175,55,0.3)]" href="https://www.google.com/maps/search/?api=1&amp;query=28.100296,30.748982" target="_blank">
@@ -728,7 +728,7 @@
       function setAudioUI(playing) {
         isPlaying = playing;
         if (audioIcon) audioIcon.innerText = playing ? "pause_circle" : "play_circle";
-        if (audioLabel) audioLabel.innerText = playing ? "إيقاف النغم" : "تشغيل النغم";
+        if (audioLabel) audioLabel.innerText = playing ? "إيقاف الأغنية" : "تشغيل الأغنية";
         if (eqContainer) {
           eqContainer.style.display = playing ? "flex" : "none";
         }
