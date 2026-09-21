@@ -175,6 +175,206 @@
       border-color: rgba(212,175,55,0.35);
     }
 
+    /* ==================== 3D REALISTIC ROYAL ENVELOPE ==================== */
+    .envelope-scene {
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
+    }
+
+    .royal-envelope {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      transition: transform 0.6s var(--ease-luxury);
+    }
+    @media (min-width: 400px) {
+      .royal-envelope {
+        width: 370px;
+        height: 245px;
+      }
+    }
+
+    /* Envelope Back (Pocket interior) */
+    .envelope-back {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #181d26, #0e1218);
+      border-radius: 14px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.15);
+      overflow: hidden;
+    }
+    .envelope-back::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 50% 30%, #1a222e 0%, #0d1016 100%);
+      border: 1px dashed rgba(212, 175, 55, 0.25);
+    }
+
+    /* Royal Invitation Card tucked inside */
+    .royal-letter {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 8px;
+      height: 94%;
+      background: linear-gradient(165deg, #1d2532 0%, #11151c 100%);
+      border-radius: 10px;
+      border: 1.5px solid #D4AF37;
+      padding: 16px 12px;
+      z-index: 2;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(212, 175, 55, 0.1);
+      transform: translateY(0);
+      transition: transform 0.9s cubic-bezier(0.25, 1, 0.4, 1), box-shadow 0.9s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      will-change: transform;
+    }
+
+    .royal-envelope.is-open .royal-letter {
+      transform: translateY(-125px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.4);
+      z-index: 6;
+    }
+
+    /* Pocket Front Folds */
+    .envelope-pocket {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .pocket-fold-left {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #171d27 0%, #0d1117 100%);
+      clip-path: polygon(0 0, 0 100%, 51% 52%);
+      filter: drop-shadow(2px 0 5px rgba(0, 0, 0, 0.5));
+    }
+
+    .pocket-fold-right {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(225deg, #171d27 0%, #0c0f15 100%);
+      clip-path: polygon(100% 0, 100% 100%, 49% 52%);
+      filter: drop-shadow(-2px 0 5px rgba(0, 0, 0, 0.5));
+    }
+
+    .pocket-fold-bottom {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, #12161f 0%, #1a222e 100%);
+      clip-path: polygon(0 100%, 100% 100%, 50% 46%);
+      filter: drop-shadow(0 -3px 8px rgba(0, 0, 0, 0.6));
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+    }
+
+    /* Top Triangular Flap */
+    .envelope-top-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: top center;
+      transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .flap-triangle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 56%;
+      background: linear-gradient(180deg, #202837 0%, #141923 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.7));
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .flap-triangle::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-bottom: 1.5px solid rgba(212, 175, 55, 0.5);
+    }
+
+    .royal-envelope.is-open .envelope-top-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    /* Realistic 3D Wax Seal */
+    .wax-seal-container {
+      position: absolute;
+      top: 54%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 76px;
+      height: 76px;
+      z-index: 10;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+    }
+
+    .wax-seal-container:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .wax-seal-container:active {
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    .wax-seal-stamp {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 49% 51% 48% 52% / 52% 48% 52% 48%;
+      background: radial-gradient(circle at 35% 30%, #c9182b 0%, #910e1c 48%, #4e050b 100%);
+      box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.85),
+        0 3px 8px rgba(0, 0, 0, 0.6),
+        inset 0 2px 4px rgba(255, 180, 180, 0.45),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #630810;
+    }
+
+    .wax-seal-inner {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(255, 215, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .wax-seal-container.broken {
+      transform: translate(-50%, -50%) scale(1.3);
+      opacity: 0;
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
     /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
@@ -194,60 +394,89 @@
   <canvas id="goldParticlesCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-35"></canvas>
 
   <!-- ==================== ROYAL ENVELOPE OPENING OVERLAY ==================== -->
-  <div id="envelopeOverlay" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090C] transition-opacity duration-500 ease-out overflow-hidden p-4">
-    <!-- Ambient Radial Glow -->
-    <div class="absolute w-[420px] h-[420px] bg-gradient-to-tr from-[#D4AF37]/15 via-[#F0D277]/10 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+  <div id="envelopeOverlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#07090C] transition-all duration-700 ease-out overflow-hidden p-4 select-none">
+    <!-- Ambient Radial Gold Aura -->
+    <div class="absolute w-[480px] h-[480px] bg-gradient-to-tr from-[#D4AF37]/20 via-[#F0D277]/10 to-transparent rounded-full blur-[110px] pointer-events-none"></div>
 
-    <!-- Envelope Container -->
-    <div id="envelopeCard" class="relative w-full max-w-[420px] flex flex-col items-center text-center p-8 rounded-3xl bg-gradient-to-b from-[#141A22] via-[#0E1217] to-[#0A0D11] border border-[#D4AF37]/40 shadow-[0_24px_70px_rgba(0,0,0,0.95),0_0_35px_rgba(212,175,55,0.2)] transition-all duration-400 ease-out">
-      
-      <!-- Ornate Corner Motifs -->
-      <div class="absolute top-4 left-4 text-[#D4AF37] opacity-60 text-lg select-none">✦</div>
-      <div class="absolute top-4 right-4 text-[#D4AF37] opacity-60 text-lg select-none">✦</div>
-      <div class="absolute bottom-4 left-4 text-[#D4AF37] opacity-60 text-lg select-none">✦</div>
-      <div class="absolute bottom-4 right-4 text-[#D4AF37] opacity-60 text-lg select-none">✦</div>
-
-      <!-- Sacred Inscription in Classical Arabic Font -->
-      <span class="font-quran text-base text-[#D4AF37] tracking-wider mb-2 select-none">بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</span>
-      
-      <!-- Royal Invitation Header -->
-      <div class="flex items-center gap-2 mb-2">
-        <span class="w-8 h-px bg-gradient-to-r from-transparent to-[#D4AF37]"></span>
-        <span class="font-cairo text-xs uppercase tracking-[0.25em] text-[#CFC8BC]/90 font-semibold">دعوة زفاف خاصة</span>
-        <span class="w-8 h-px bg-gradient-to-l from-transparent to-[#D4AF37]"></span>
+    <!-- Sacred Top Inscription & Royal Header -->
+    <div class="flex flex-col items-center text-center mb-6 z-10">
+      <span class="font-quran text-lg sm:text-xl text-[#F0D277] tracking-wider mb-2 drop-shadow-[0_2px_10px_rgba(240,210,119,0.35)] select-none">
+        بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ
+      </span>
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-px bg-gradient-to-r from-transparent to-[#D4AF37]"></span>
+        <span class="font-cairo text-xs uppercase tracking-[0.28em] text-[#E8DCC4] font-bold">دعوة زفاف ملكية</span>
+        <span class="w-10 h-px bg-gradient-to-l from-transparent to-[#D4AF37]"></span>
       </div>
+    </div>
 
-      <!-- Couple Names in Arabic Royal Calligraphy -->
-      <h2 class="font-calligraphy text-4xl sm:text-5xl text-[#F0D277] font-bold my-2 tracking-wide drop-shadow-[0_2px_14px_rgba(240,210,119,0.35)]">
-        محمد &amp; سارة
-      </h2>
-      <p class="font-cairo text-xs text-[#CFC8BC]/90 mb-5 font-normal">يشرفنا حضوركم لتكتمل فرحتنا في ليلة العمر</p>
-      
-      <!-- Royal Wax Seal (Interactive Button) -->
-      <div class="relative my-3 cursor-pointer group" id="waxSealBtn">
-        <!-- Calm Candlelight Breathing Aura -->
-        <div class="absolute -inset-3 rounded-full bg-[#D4AF37]/35 blur-md calm-glow"></div>
+    <!-- 3D Realistic Royal Physical Envelope -->
+    <div class="envelope-scene w-full max-w-[420px] flex justify-center items-center py-2 z-10">
+      <div id="royalEnvelope" class="royal-envelope">
         
-        <!-- Wax Seal Medallion -->
-        <div class="relative w-28 h-28 rounded-full bg-gradient-to-br from-[#F5D77F] via-[#D4AF37] to-[#8C630D] p-[3px] shadow-[0_12px_30px_rgba(0,0,0,0.7),inset_0_2px_6px_rgba(255,255,255,0.6)] transform group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-          <div class="w-full h-full rounded-full bg-gradient-to-tr from-[#684705] via-[#9B7114] to-[#C99726] border-2 border-dashed border-[#FFEAA7]/70 flex flex-col items-center justify-center text-center shadow-inner">
-            <span class="material-symbols-outlined text-[#FFF5D0] text-3xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" style="font-variation-settings: 'FILL' 1;">crown</span>
-            <span class="font-cairo font-bold text-xs text-[#FFF9E6] tracking-widest -mt-0.5">M &amp; S</span>
+        <!-- 1. Envelope Back Base (Interior pocket cavity) -->
+        <div class="envelope-back"></div>
+
+        <!-- 2. The Royal Invitation Card (Slides Up on opening) -->
+        <div class="royal-letter" id="royalLetter">
+          <!-- Ornate Gold Corner Motifs -->
+          <span class="absolute top-2 left-2 text-[#D4AF37] opacity-60 text-xs select-none">✦</span>
+          <span class="absolute top-2 right-2 text-[#D4AF37] opacity-60 text-xs select-none">✦</span>
+          
+          <span class="material-symbols-outlined text-[#F0D277] text-2xl mb-1 drop-shadow-[0_2px_6px_rgba(212,175,55,0.4)]" style="font-variation-settings: 'FILL' 1;">crown</span>
+          <span class="font-cairo text-[10px] uppercase tracking-[0.25em] text-[#E5D7B7] font-bold mb-1">دعوة زفاف ملكية</span>
+          
+          <h3 class="font-calligraphy text-2xl sm:text-3xl text-[#F0D277] font-bold tracking-wide drop-shadow-[0_2px_8px_rgba(240,210,119,0.35)]">
+            محمد &amp; سارة
+          </h3>
+          
+          <div class="w-20 h-px bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent my-1.5"></div>
+          
+          <p class="font-cairo text-xs text-[#E5DCCF] font-medium leading-relaxed">
+            الجمعة ٢٠ نوفمبر ٢٠٢٦ م
+          </p>
+          <span class="text-[10px] text-[#F0D277] font-semibold mt-0.5">فندق سميراميس إنتركونتيننتال • القاهرة</span>
+        </div>
+
+        <!-- 3. Front Pocket Folds (Left, Right, Bottom with authentic paper shadows) -->
+        <div class="envelope-pocket">
+          <div class="pocket-fold-left"></div>
+          <div class="pocket-fold-right"></div>
+          <div class="pocket-fold-bottom"></div>
+        </div>
+
+        <!-- 4. Top Triangular Flap (Folds down, flips up 180° on opening) -->
+        <div class="envelope-top-flap" id="envelopeTopFlap">
+          <div class="flap-triangle"></div>
+        </div>
+
+        <!-- 5. 3D Hand-Crafted Royal Wax Seal -->
+        <div class="wax-seal-container group" id="waxSealBtn" title="انقر لفض الختم">
+          <!-- Ambient breathing gold aura -->
+          <div class="absolute -inset-2.5 rounded-full bg-[#D4AF37]/35 blur-md calm-glow pointer-events-none"></div>
+          
+          <div class="wax-seal-stamp">
+            <div class="wax-seal-inner">
+              <span class="material-symbols-outlined text-[#FFEAA7] text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" style="font-variation-settings: 'FILL' 1;">crown</span>
+              <span class="font-cairo font-bold text-[10px] text-[#FFF9E6] tracking-widest -mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">م &amp; س</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Action Button & Hint -->
-      <div class="mt-5 flex flex-col items-center gap-2 w-full">
-        <button id="openInvitationTrigger" class="gold-shimmer-btn w-full max-w-xs py-3.5 px-6 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#F0D277] to-[#D4AF37] text-[#0B0D10] font-bold text-sm shadow-[0_6px_25px_rgba(212,175,55,0.35)] hover:scale-102 active:scale-98 transition-all duration-200">
-          انقر لفتح الدعوة الملكية
-        </button>
-        <span class="text-[11px] text-[#CFC8BC]/75 flex items-center gap-1 font-normal mt-0.5">
-          <span class="material-symbols-outlined text-[14px] text-[#F0D277]">music_note</span>
-          تتضمن موسيقى هادئة وتأثيرات بصرية
-        </span>
       </div>
+    </div>
 
+    <!-- Action Prompt & Tap Button -->
+    <div class="mt-8 flex flex-col items-center gap-2.5 z-10 w-full max-w-xs">
+      <button id="openInvitationTrigger" class="gold-shimmer-btn w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#F0D277] to-[#D4AF37] text-[#0B0D10] font-bold text-sm shadow-[0_6px_25px_rgba(212,175,55,0.35)] hover:scale-102 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-lg">drafts</span>
+        <span>انقر لفض الختم وفتح الدعوة</span>
+      </button>
+      
+      <span class="text-[11px] text-[#CFC8BC]/80 flex items-center gap-1.5 font-normal mt-1">
+        <span class="material-symbols-outlined text-[15px] text-[#F0D277]">music_note</span>
+        <span>تتضمن زفة العروسين بصوت حسين الجسمي</span>
+      </span>
     </div>
   </div>
 
@@ -766,41 +995,72 @@
         });
       }
 
-      // 4. Smooth Royal Envelope Opening Logic (Direct User Touch starts audio on mobile)
+      // 4. Realistic 3D Royal Envelope Opening Experience
       const envelopeOverlay = document.getElementById("envelopeOverlay");
-      const envelopeCard = document.getElementById("envelopeCard");
+      const royalEnvelope = document.getElementById("royalEnvelope");
       const waxSealBtn = document.getElementById("waxSealBtn");
       const openTrigger = document.getElementById("openInvitationTrigger");
+      let isEnvelopeOpened = false;
 
-      function openEnvelope() {
-        // Confetti celebration
-        launchGoldCelebration();
+      function openRoyalEnvelope() {
+        if (isEnvelopeOpened) return;
+        isEnvelopeOpened = true;
 
-        // Start HTML5 Audio directly on user click gesture (passes mobile browser policy)
+        // 1. Immediately trigger Audio on direct user touch/click (Passes iOS/Android mobile policy)
         if (weddingAudio) {
           weddingAudio.play().then(() => {
             setAudioUI(true);
-          }).catch(e => {
-            console.log("Audio play deferred", e);
+          }).catch(err => {
+            console.log("Audio playback notice:", err);
           });
         }
 
-        // Clean & fast fade out (450ms)
-        if (envelopeCard) {
-          envelopeCard.style.transform = "scale(0.97) translateY(12px)";
-          envelopeCard.style.opacity = "0";
+        // 2. Break Wax Seal Animation & micro-confetti burst at seal
+        if (waxSealBtn) {
+          waxSealBtn.classList.add("broken");
         }
-        if (envelopeOverlay) {
-          envelopeOverlay.style.opacity = "0";
-          envelopeOverlay.style.pointerEvents = "none";
-          setTimeout(() => {
-            envelopeOverlay.remove();
-          }, 500);
+
+        if (typeof confetti === 'function') {
+          const rect = waxSealBtn ? waxSealBtn.getBoundingClientRect() : null;
+          const originX = rect ? (rect.left + rect.width / 2) / window.innerWidth : 0.5;
+          const originY = rect ? (rect.top + rect.height / 2) / window.innerHeight : 0.55;
+
+          confetti({
+            particleCount: 35,
+            spread: 55,
+            origin: { x: originX, y: originY },
+            colors: ['#D4AF37', '#F0D277', '#C9182B', '#FFEAA7'],
+            disableForReducedMotion: true
+          });
         }
+
+        // 3. Unfold Envelope Flap & Elevate Royal Letter Card
+        setTimeout(() => {
+          if (royalEnvelope) {
+            royalEnvelope.classList.add("is-open");
+          }
+        }, 150);
+
+        // 4. Grand Celebratory Cascade of Confetti
+        setTimeout(() => {
+          launchGoldCelebration();
+        }, 650);
+
+        // 5. Cinematic Transition into Main Royal Invitation
+        setTimeout(() => {
+          if (envelopeOverlay) {
+            envelopeOverlay.style.opacity = "0";
+            envelopeOverlay.style.transform = "scale(1.05)";
+            envelopeOverlay.style.pointerEvents = "none";
+            setTimeout(() => {
+              envelopeOverlay.remove();
+            }, 750);
+          }
+        }, 1600);
       }
 
-      if (waxSealBtn) waxSealBtn.addEventListener("click", openEnvelope);
-      if (openTrigger) openTrigger.addEventListener("click", openEnvelope);
+      if (waxSealBtn) waxSealBtn.addEventListener("click", openRoyalEnvelope);
+      if (openTrigger) openTrigger.addEventListener("click", openRoyalEnvelope);
 
       // 5. High-Performance IntersectionObserver (Smooth, 0.5s, Unobserves once visible)
       const scrollObserver = new IntersectionObserver((entries, observer) => {
