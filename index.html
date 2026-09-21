@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#0B0D10;color:#F5F2EA;}body{overscroll-behavior-y:none;-webkit-font-smoothing:antialiased;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Custom Luxury Motion Curves & Micro-interactions */
+:root {
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ease-luxury {
+  transition-timing-function: var(--ease-luxury);
+}
+
+.ease-smooth {
+  transition-timing-function: var(--ease-smooth);
+}
+
+/* Subtle gold shimmer overlay for key CTA buttons using hardware-accelerated transform */
+.gold-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+.gold-shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+  animation: shimmerSweep 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  35%, 100% {
+    transform: translateX(280%) skewX(-20deg);
+  }
+}
+
+/* Smooth Story Carousel Transitions */
+.story-card {
+  will-change: transform, opacity;
+  transition: transform 380ms var(--ease-luxury), opacity 380ms var(--ease-luxury), border-color 380ms var(--ease-luxury);
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gold-shimmer-btn::after {
+    display: none !important;
+  }
+  .story-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#e2e2e6", "feedback-danger": "#FF5A6A", "surface-variant": "#333538", "surface-container-low": "#1a1c1f", "feedback-success": "#3DDC97", "tertiary-fixed": "#fedea5", "surface-dim": "#111317", "gold-highlight": "#F0D277", "error": "#ffb4ab", "tertiary-fixed-dim": "#e1c38c", "primary": "#f2ca50", "secondary-container": "#6a5500", "text-secondary": "#CFC8BC", "secondary-fixed-dim": "#e1c46b", "on-error-container": "#ffdad6", "primary-fixed": "#ffe088", "text-primary": "#F5F2EA", "tertiary": "#e9ca93", "outline-variant": "#4d4635", "primary-container": "#d4af37", "on-primary": "#3c2f00", "deep-onyx": "#11151B", "outline": "#99907c", "secondary-fixed": "#ffe084", "surface-card": "#141A22", "inverse-primary": "#735c00", "surface-container-high": "#282a2d", "on-secondary-fixed-variant": "#574500", "night-charcoal": "#0B0D10", "border-divider": "#2A3442", "on-secondary": "#3c2f00", "secondary": "#e1c46b", "on-tertiary-fixed-variant": "#584419", "surface-container-lowest": "#0c0e11", "primary-fixed-dim": "#e9c349", "surface": "#111317", "background": "#111317", "surface-container": "#1e2023", "surface-container-highest": "#333538", "on-background": "#e2e2e6", "surface-bright": "#37393d", "on-tertiary-fixed": "#261900", "on-primary-container": "#554300", "on-secondary-fixed": "#231b00", "inverse-on-surface": "#2f3034", "surface-tint": "#e9c349", "on-secondary-container": "#e9cb71", "error-container": "#93000a", "gold-foil": "#D4AF37", "on-tertiary-container": "#564217", "on-primary-fixed": "#241a00", "feedback-warning": "#F6C177", "gold-glow": "#FFDFA6", "tertiary-container": "#ccaf7a", "on-error": "#690005", "on-primary-fixed-variant": "#574500", "on-surface-variant": "#d0c5af", "on-tertiary": "#402d04", "inverse-surface": "#e2e2e6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1rem", "margin-desktop": "2rem", "margin": "1.25rem", "space-xs": "0.25rem", "space-xl": "2rem", "margin-mobile": "1.125rem", "space-2xl": "3rem", "space-md": "1rem", "space-sm": "0.5rem", "space-3xl": "4.5rem", "space-lg": "1.5rem" }, "fontFamily": { "label-sm": ["Plus Jakarta Sans"], "display-hero-mobile": ["Noto Serif"], "headline-md": ["Noto Serif"], "headline-sm": ["Noto Serif"], "body-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Noto Serif"], "display-hero": ["Noto Serif"], "label-md": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-lg": ["Noto Serif"], "caption": ["Plus Jakarta Sans"] }, "fontSize": { "label-sm": ["12px", { "lineHeight": "18px", "fontWeight": "500" }], "display-hero-mobile": ["38px", { "lineHeight": "52px", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "34px", "fontWeight": "600" }], "headline-sm": ["20px", { "lineHeight": "30px", "fontWeight": "500" }], "body-sm": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }], "headline-lg-mobile": ["26px", { "lineHeight": "38px", "fontWeight": "600" }], "display-hero": ["48px", { "lineHeight": "64px", "fontWeight": "700" }], "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "44px", "fontWeight": "600" }], "caption": ["11px", { "lineHeight": "16px", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-night-charcoal font-body-md text-body-md text-text-primary min-h-screen flex flex-col selection:bg-gold-foil/30 selection:text-gold-glow"><header class="fixed top-0 inset-x-0 z-50 bg-night-charcoal/80 backdrop-blur-xl pt-safe"><div class="w-full h-0.5 bg-surface-container-high"><div class="h-full w-1/4 bg-gradient-to-r from-gold-foil via-gold-highlight to-gold-glow transition-all duration-300 ease-smooth" id="scrollProgress"></div></div><div class="h-16 px-margin-mobile flex items-center justify-between max-w-[560px] mx-auto w-full"><button aria-label="تشغيل الموسيقى" class="w-11 h-11 rounded-full bg-deep-onyx/70 backdrop-blur-md flex items-center justify-center text-gold-foil hover:text-gold-highlight shadow-[0_4px_16px_rgba(212,175,55,0.15)] active:scale-[0.96] hover:-translate-y-[1px] transition-all duration-200 ease-luxury will-change-transform" id="musicToggle"><span class="material-symbols-outlined text-[20px]">music_note</span></button><div class="flex flex-col items-center justify-center cursor-default"><div class="flex items-center gap-1.5 text-gold-foil"><span class="material-symbols-outlined text-[16px]">arrow_back_ios_new</span><h1 class="font-headline-sm text-headline-sm text-gold-highlight tracking-wide">Invitation Overview</h1><span class="material-symbols-outlined text-[16px]">arrow_back_ios_new</span></div><span class="font-caption text-caption text-text-secondary tracking-widest">دعوة زفاف ملكية</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_2px_10px_rgba(242,202,80,0.2)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-night-charcoal max-w-[560px] mx-auto min-h-screen"><div class="flex flex-col w-full text-text-primary px-margin-mobile space-y-space-2xl select-none" dir="rtl">
+<!-- Architectural Background Starlight Texture -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-25 overflow-hidden">
+<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="48" id="arch-grid" patternunits="userSpaceOnUse" width="48">
+<circle cx="2" cy="2" fill="#D4AF37" opacity="0.6" r="0.8"></circle>
+<path d="M 48 0 L 0 0 0 48" fill="none" opacity="0.4" stroke="#2A3442" stroke-width="0.3"></path>
+<circle cx="24" cy="24" fill="#F0D277" opacity="0.2" r="1.2"></circle>
+</pattern>
+</defs>
+<rect fill="url(#arch-grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<!-- Hidden YouTube Audio Stream -->
+<div class="hidden">
+<div id="yt-audio-player"></div>
+</div>
+<!-- ==================== SECTION 1: ARCHITECTURAL HERO ==================== -->
+<section class="relative w-full pt-space-md z-10">
+<!-- Outer Double Hairline Frame with Islamic Geometric Geometry -->
+<div class="relative w-full rounded-xl bg-surface-card shadow-2xl p-space-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.7)] transition-all duration-400 ease-luxury">
+<!-- Subtle ambient gradient mesh -->
+<div class="absolute -top-24 -right-24 w-60 h-60 bg-gold-foil/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-60 h-60 bg-gold-highlight/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Architectural SVG Precision Inner Border -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<rect fill="none" height="calc(100% - 16px)" rx="10" stroke="#D4AF37" stroke-opacity="0.35" stroke-width="0.75" width="calc(100% - 16px)" x="8" y="8"></rect>
+<rect fill="none" height="calc(100% - 26px)" rx="8" stroke="#D4AF37" stroke-dasharray="4 2" stroke-opacity="0.2" stroke-width="0.4" width="calc(100% - 26px)" x="13" y="13"></rect>
+<!-- Islamic Modern Corner Motifs -->
+<path d="M8 26 L26 8 M8 32 L32 8" stroke="#D4AF37" stroke-opacity="0.5" stroke-width="0.8"></path>
+<path d="M calc(100% - 8px) 26 L calc(100% - 26px) 8 M calc(100% - 8px) 32 L calc(100% - 32px) 8" stroke="#D4AF37" stroke-opacity="0.5" stroke-width="0.8"></path>
+<path d="M8 calc(100% - 26px) L26 calc(100% - 8px) M8 calc(100% - 32px) L32 calc(100% - 8px)" stroke="#D4AF37" stroke-opacity="0.5" stroke-width="0.8"></path>
+<path d="M calc(100% - 8px) calc(100% - 26px) L calc(100% - 26px) calc(100% - 8px) M calc(100% - 8px) calc(100% - 32px) L calc(100% - 32px) calc(100% - 8px)" stroke="#D4AF37" stroke-opacity="0.5" stroke-width="0.8"></path>
+</svg>
+<!-- Content Core -->
+<div class="relative z-10 flex flex-col items-center text-center space-y-space-md py-space-sm">
+<!-- Sacred Star Monogram -->
+<div class="w-10 h-10 rounded-full bg-deep-onyx flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.25)] transform transition-transform duration-300 ease-luxury hover:scale-105">
+<span class="material-symbols-outlined text-gold-highlight text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<!-- Holy Verse Epigraph -->
+<div class="flex flex-col items-center space-y-1">
+<span class="font-caption text-caption text-gold-foil tracking-widest">بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</span>
+<p class="font-body-sm text-body-sm text-text-secondary max-w-xs leading-relaxed italic">
+            "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً"
+          </p>
+</div>
+<!-- Visual Partition Line -->
+<div class="w-24 h-px bg-gradient-to-r from-transparent via-gold-foil/40 to-transparent my-1"></div>
+<!-- Couple Typographic Hierarchy -->
+<div class="flex flex-col items-center space-y-space-sm w-full">
+<!-- Groom Section -->
+<div class="flex flex-col items-center space-y-0.5">
+<span class="font-caption text-caption text-gold-glow uppercase tracking-wider">العريس المهندس</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-text-primary font-bold tracking-tight">
+              محمد عماد موسى مرعي
+            </h2>
+</div>
+<!-- Ampersand Geometric Node -->
+<div class="flex items-center justify-center my-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-gold-highlight font-display-hero-mobile text-lg shadow-inner transform transition-transform duration-300 ease-luxury hover:scale-110">
+              &amp;
+            </div>
+</div>
+<!-- Bride Section -->
+<div class="flex flex-col items-center space-y-1.5">
+<div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-surface-container text-gold-highlight shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">crown</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide">الأميرة</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-text-primary font-bold tracking-tight">
+              سارة صلاح أحمد عبدالرحمن
+            </h2>
+</div>
+</div>
+<!-- Date & Venue Capsule Summary -->
+<div class="w-full mt-space-sm pt-space-sm flex flex-col items-center space-y-1 bg-surface-container-low/70 rounded-lg py-2.5 px-3 border border-border-divider/30">
+<div class="flex items-center gap-2 text-gold-highlight">
+<span class="material-symbols-outlined text-[17px]">event</span>
+<span class="font-label-md text-label-md">السبت ٢١ نوفمبر ٢٠٢٦ م</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">الساعة ٨:٠٠ مساءً • قاعة جاردينيا 2، المنيا</span>
+</div>
+<!-- Hero Dual Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm w-full pt-space-xs">
+<!-- Audio Toggle CTA -->
+<button class="flex items-center justify-center gap-2 py-3 px-3 rounded-full bg-deep-onyx border border-border-divider/50 text-text-primary active:scale-[0.98] hover:-translate-y-[1px] transition-all duration-200 ease-luxury shadow-md group will-change-transform" id="audioControlBtn">
+<span class="material-symbols-outlined text-gold-foil text-[18px] group-hover:scale-110 transition-transform duration-200 ease-luxury" id="audioIcon">play_circle</span>
+<span class="font-label-sm text-label-sm font-medium" id="audioLabel">تشغيل النغم</span>
+</button>
+<!-- Direct Navigation CTA with subtle shimmer -->
+<a class="gold-shimmer-btn flex items-center justify-center gap-2 py-3 px-3 rounded-full bg-gradient-to-r from-gold-foil via-gold-highlight to-gold-foil text-night-charcoal font-semibold active:scale-[0.98] hover:-translate-y-[1px] transition-all duration-200 ease-luxury shadow-[0_4px_16px_rgba(212,175,55,0.25)] will-change-transform" href="https://www.google.com/maps/search/?api=1&amp;query=28.100296,30.748982" target="_blank">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+<span class="font-label-sm text-label-sm">الموقع الجغرافي</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 2: SWIPE STORY CARDS ==================== -->
+<section class="flex flex-col space-y-space-md z-10">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-gold-foil animate-pulse"></div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">دليل الملحمة</h3>
+</div>
+<!-- Indicator Track -->
+<div class="flex items-center gap-1.5" id="story-indicators">
+<div class="story-dot w-6 h-1 rounded-full bg-gold-foil transition-all duration-300 ease-luxury"></div>
+<div class="story-dot w-2 h-1 rounded-full bg-surface-container-high transition-all duration-300 ease-luxury"></div>
+<div class="story-dot w-2 h-1 rounded-full bg-surface-container-high transition-all duration-300 ease-luxury"></div>
+<div class="story-dot w-2 h-1 rounded-full bg-surface-container-high transition-all duration-300 ease-luxury"></div>
+<div class="story-dot w-2 h-1 rounded-full bg-surface-container-high transition-all duration-300 ease-luxury"></div>
+</div>
+</div>
+<!-- Snap Carousel Scroll Container -->
+<div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-space-md pb-2 -mx-margin-mobile px-margin-mobile scroll-smooth" id="storyCarousel">
+<!-- Card 1: Time & Date -->
+<div class="story-card snap-center shrink-0 w-[84vw] max-w-[340px] rounded-xl bg-surface-card p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden border border-border-divider/40 active:scale-[0.99]" data-index="0">
+<div class="flex justify-between items-start">
+<span class="font-caption text-caption text-gold-foil tracking-widest uppercase">المحطة I</span>
+<span class="material-symbols-outlined text-gold-highlight text-[22px]">schedule</span>
+</div>
+<div class="space-y-1 my-space-md">
+<span class="font-label-sm text-label-sm text-text-secondary">الموعد المرتقب</span>
+<h4 class="font-headline-sm text-headline-sm text-text-primary">السبت ٢١ نوفمبر ٢٠٢٦</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            تنطلق مراسم الاحتفال تمام الساعة 8:00 مساءً بحضور الأحبة تحت أضواء عروس الصعيد.
+          </p>
+</div>
+<div class="w-full bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between border border-border-divider/20">
+<span class="font-caption text-caption text-text-secondary">توقيت جمهورية مصر العربية</span>
+<span class="font-label-sm text-label-sm text-gold-highlight font-semibold">20:00 CLT</span>
+</div>
+</div>
+<!-- Card 2: The Venue -->
+<div class="story-card snap-center shrink-0 w-[84vw] max-w-[340px] rounded-xl bg-surface-card p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden border border-border-divider/40 active:scale-[0.99] opacity-90 scale-[0.98]" data-index="1">
+<div class="flex justify-between items-start">
+<span class="font-caption text-caption text-gold-foil tracking-widest uppercase">المحطة II</span>
+<span class="material-symbols-outlined text-gold-highlight text-[22px]">apartment</span>
+</div>
+<div class="space-y-1 my-space-md">
+<span class="font-label-sm text-label-sm text-text-secondary">صرح اللقاء</span>
+<h4 class="font-headline-sm text-headline-sm text-text-primary">قاعة جاردينيا 2</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            على طريق مصر أسوان الزراعي، بمحافظة المنيا. صرح معماري ملكي يستقبل تشريفكم الكريم.
+          </p>
+</div>
+<div class="w-full bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between border border-border-divider/20">
+<span class="font-caption text-caption text-text-secondary">المحافظة</span>
+<span class="font-label-sm text-label-sm text-gold-highlight font-semibold">المنيا - عروس الصعيد</span>
+</div>
+</div>
+<!-- Card 3: Route Instructions -->
+<div class="story-card snap-center shrink-0 w-[84vw] max-w-[340px] rounded-xl bg-surface-card p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden border border-border-divider/40 active:scale-[0.99] opacity-90 scale-[0.98]" data-index="2">
+<div class="flex justify-between items-start">
+<span class="font-caption text-caption text-gold-foil tracking-widest uppercase">المحطة III</span>
+<span class="material-symbols-outlined text-gold-highlight text-[22px]">alt_route</span>
+</div>
+<div class="space-y-1 my-space-md">
+<span class="font-label-sm text-label-sm text-text-secondary">إرشادات الوصول</span>
+<h4 class="font-headline-sm text-headline-sm text-text-primary">طريق مصر أسوان الزراعي</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            سهولة تامة في الوصول مع توفر ساحات اصطفاف رحبة وخدمة إرشاد مخصصة لراحة ضيوفنا الكرام.
+          </p>
+</div>
+<div class="w-full bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between border border-border-divider/20">
+<span class="font-caption text-caption text-text-secondary">نقطة الارتكاز</span>
+<span class="font-label-sm text-label-sm text-gold-highlight font-semibold">قسم ثان المنيا</span>
+</div>
+</div>
+<!-- Card 4: Memorable Moments -->
+<div class="story-card snap-center shrink-0 w-[84vw] max-w-[340px] rounded-xl bg-surface-card p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden border border-border-divider/40 active:scale-[0.99] opacity-90 scale-[0.98]" data-index="3">
+<div class="flex justify-between items-start">
+<span class="font-caption text-caption text-gold-foil tracking-widest uppercase">المحطة IV</span>
+<span class="material-symbols-outlined text-gold-highlight text-[22px]">photo_camera</span>
+</div>
+<div class="space-y-1 my-space-md">
+<span class="font-label-sm text-label-sm text-text-secondary">أطيب اللحظات</span>
+<h4 class="font-headline-sm text-headline-sm text-text-primary">ذكريات لا تُمحى</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            توثيق اللحظات الاستثنائية بوجودكم العطر. تخليد الفرحة ومشاركتنا بهجة العمر وأبهى لياليه.
+          </p>
+</div>
+<div class="w-full bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between border border-border-divider/20">
+<span class="font-caption text-caption text-text-secondary">الرمزية</span>
+<span class="font-label-sm text-label-sm text-gold-highlight font-semibold">محبة وامتنان</span>
+</div>
+</div>
+<!-- Card 5: Sacred Blessing -->
+<div class="story-card snap-center shrink-0 w-[84vw] max-w-[340px] rounded-xl bg-surface-card p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden border border-border-divider/40 active:scale-[0.99] opacity-90 scale-[0.98]" data-index="4">
+<div class="flex justify-between items-start">
+<span class="font-caption text-caption text-gold-foil tracking-widest uppercase">المحطة V</span>
+<span class="material-symbols-outlined text-gold-highlight text-[22px]">favorite</span>
+</div>
+<div class="space-y-1 my-space-md">
+<span class="font-label-sm text-label-sm text-text-secondary">دعاء الجمع والبركة</span>
+<h4 class="font-headline-sm text-headline-sm text-text-primary">بارك الله لهما</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            "اللَّهُمَّ بَارِكْ لَهُمَا وَبَارِكْ عَلَيْهِمَا وَاجْمَعْ بَيْنَهُمَا فِي خَيْرٍ". نسأل الله حياة ملؤها السكينة.
+          </p>
+</div>
+<div class="w-full bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between border border-border-divider/20">
+<span class="font-caption text-caption text-text-secondary">خالص الدعاء</span>
+<span class="font-label-sm text-label-sm text-gold-highlight font-semibold">بالبركة والوئام</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 3: ARCHITECTURAL COUNTDOWN ==================== -->
+<section class="relative w-full rounded-xl bg-surface-card p-space-lg overflow-hidden shadow-2xl z-10 border border-border-divider/40">
+<!-- Concentric Celestial Rings SVG -->
+<div class="absolute -left-12 -top-12 w-48 h-48 opacity-10 pointer-events-none">
+<svg class="w-full h-full stroke-gold-foil fill-none" stroke-width="0.5" viewbox="0 0 100 100">
+<circle cx="50" cy="50" r="45" stroke-dasharray="2 2"></circle>
+<circle cx="50" cy="50" r="35"></circle>
+<circle cx="50" cy="50" r="25" stroke-dasharray="4 1"></circle>
+<circle cx="50" cy="50" r="15"></circle>
+</svg>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center space-y-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-foil text-[18px]">hourglass_top</span>
+<span class="font-label-sm text-label-sm text-gold-glow uppercase tracking-wider">العد التنازلي للميعاد</span>
+</div>
+<!-- 4-Grid Monolithic Pillar Modules -->
+<div class="grid grid-cols-4 gap-2 w-full">
+<!-- Days -->
+<div class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-lowest relative overflow-hidden shadow-inner border border-border-divider/30 hover:border-gold-foil/30 transition-colors duration-200">
+<div class="w-full h-0.5 bg-gold-foil/30 absolute top-0 inset-x-0"></div>
+<span class="font-display-hero-mobile text-display-hero-mobile text-gold-highlight font-bold tracking-tight transition-transform duration-200" id="cd-days">00</span>
+<span class="font-label-sm text-label-sm text-text-secondary mt-1">يوم</span>
+</div>
+<!-- Hours -->
+<div class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-lowest relative overflow-hidden shadow-inner border border-border-divider/30 hover:border-gold-foil/30 transition-colors duration-200">
+<div class="w-full h-0.5 bg-gold-foil/30 absolute top-0 inset-x-0"></div>
+<span class="font-display-hero-mobile text-display-hero-mobile text-gold-highlight font-bold tracking-tight transition-transform duration-200" id="cd-hours">00</span>
+<span class="font-label-sm text-label-sm text-text-secondary mt-1">ساعة</span>
+</div>
+<!-- Minutes -->
+<div class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-lowest relative overflow-hidden shadow-inner border border-border-divider/30 hover:border-gold-foil/30 transition-colors duration-200">
+<div class="w-full h-0.5 bg-gold-foil/30 absolute top-0 inset-x-0"></div>
+<span class="font-display-hero-mobile text-display-hero-mobile text-gold-highlight font-bold tracking-tight transition-transform duration-200" id="cd-minutes">00</span>
+<span class="font-label-sm text-label-sm text-text-secondary mt-1">دقيقة</span>
+</div>
+<!-- Seconds -->
+<div class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-lowest relative overflow-hidden shadow-inner border border-border-divider/30 hover:border-gold-foil/30 transition-colors duration-200">
+<div class="w-full h-0.5 bg-gold-foil/30 absolute top-0 inset-x-0"></div>
+<span class="font-display-hero-mobile text-display-hero-mobile text-gold-highlight font-bold tracking-tight transition-transform duration-200" id="cd-seconds">00</span>
+<span class="font-label-sm text-label-sm text-text-secondary mt-1">ثانية</span>
+</div>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+        السبت ٢١ نوفمبر ٢٠٢٦ • تمام الساعة ٨:٠٠ م بتوقيت القاهرة
+      </p>
+</div>
+</section>
+<!-- ==================== SECTION 4: VENUE & GEOMETRIC MAP CARD ==================== -->
+<section class="flex flex-col space-y-space-md z-10">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-gold-foil text-[20px]">pin_drop</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">خريطة وموقع الحفل</h3>
+</div>
+<div class="relative w-full rounded-xl bg-surface-card overflow-hidden shadow-2xl p-space-md space-y-space-md border border-border-divider/40">
+<!-- Architectural Geometric Styled Map Graphic Container -->
+<div class="relative w-full h-52 rounded-lg bg-deep-onyx overflow-hidden flex items-center justify-center border border-border-divider/30">
+<!-- SVG Vector Map Grid Representation -->
+<svg class="absolute inset-0 w-full h-full opacity-40" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="road-grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 0 20 L 40 20 M 20 0 L 20 40" stroke="#2A3442" stroke-width="0.8"></path>
+</pattern>
+</defs>
+<rect fill="url(#road-grid)" height="100%" width="100%"></rect>
+<!-- River Nile Vector Curve representation -->
+<path d="M 320 -20 Q 240 100 290 240" fill="none" opacity="0.6" stroke="#1A2634" stroke-width="24"></path>
+<!-- Main Agriculture Highway representation -->
+<path d="M 60 -10 L 220 230" opacity="0.5" stroke="#D4AF37" stroke-dasharray="6 3" stroke-width="2"></path>
+</svg>
+<!-- Coordinate Radar Reticle -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="relative flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-gold-foil/20 animate-ping absolute"></div>
+<div class="w-10 h-10 rounded-full bg-deep-onyx flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+<span class="material-symbols-outlined text-gold-highlight text-[22px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="mt-2 px-3 py-1 rounded-full bg-surface-container-high/90 text-text-primary backdrop-blur-md shadow-md">
+<span class="font-caption text-caption font-semibold">قاعة جاردينيا 2</span>
+</div>
+</div>
+<!-- Coordinates Overlay Chip -->
+<div class="absolute bottom-2 left-2 px-2.5 py-1 rounded bg-deep-onyx/85 backdrop-blur-sm text-text-secondary font-caption text-caption border border-border-divider/30">
+          28.100296, 30.748982
+        </div>
+</div>
+<!-- Venue Information Stack -->
+<div class="space-y-1 px-1">
+<h4 class="font-headline-sm text-headline-sm text-text-primary">قاعة جاردينيا 2</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+          طريق مصر أسوان الزراعي – قسم ثان المنيا، محافظة المنيا.
+        </p>
+</div>
+<!-- Action Buttons Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<!-- Open in Maps -->
+<a class="gold-shimmer-btn flex items-center justify-center gap-2 py-3 px-3 rounded-lg bg-gradient-to-r from-gold-foil to-gold-highlight text-night-charcoal font-semibold active:scale-[0.98] hover:-translate-y-[1px] transition-all duration-200 ease-luxury shadow-md will-change-transform" href="https://www.google.com/maps/search/?api=1&amp;query=28.100296,30.748982" target="_blank">
+<span class="material-symbols-outlined text-[18px]">map</span>
+<span class="font-label-sm text-label-sm">فتح الخريطة</span>
+</a>
+<!-- Copy Coordinates Button -->
+<button class="flex items-center justify-center gap-2 py-3 px-3 rounded-lg bg-surface-container-high border border-border-divider/50 text-text-primary active:scale-[0.98] hover:-translate-y-[1px] transition-all duration-200 ease-luxury hover:bg-surface-bright will-change-transform" id="copyCoordsBtn">
+<span class="material-symbols-outlined text-gold-foil text-[18px] transition-transform duration-200 ease-luxury" id="copyIcon">content_copy</span>
+<span class="font-label-sm text-label-sm" id="copyLabel">نسخ الإحداثيات</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 5: GALLERY GRID & LIGHTBOX ==================== -->
+<section class="flex flex-col space-y-space-md z-10">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-foil text-[20px]">gallery_thumbnail</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">معرض الفخامة</h3>
+</div>
+<span class="font-caption text-caption text-text-secondary">انقر للتكبير</span>
+</div>
+<!-- Bento Grid Images -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Image 1 Large -->
+<div class="col-span-2 relative h-48 rounded-xl overflow-hidden cursor-pointer group gallery-trigger shadow-md active:scale-[0.98] transition-transform duration-200 ease-luxury will-change-transform" data-caption="صرح قاعة جاردينيا الملكي والأضواء الفخمة">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-luxury will-change-transform" data-alt="Architectural luxury wedding ballroom with high ceilings, dramatic golden ambient illumination, nocturnal black marble floors, warm candlelight reflections, modern Arabic minimal aesthetic, 8k photographic rendering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4rhNjF47o8Lh9a5UWedA5Z5WeJxaiVuQjbZYik1C77SLFSm5d3FthA7s7yn3n-JVAyNOv9sUMMLTrL0OewoyRyDkoRuPWQfU9Gkoa37BpiAHT1hD5yvH6phskOV2NhV08NB28ZFKttQU8MC1tiYmhFIkltD8ZL6GhYkYND1XpwRnN9TXEnWiELBdml5Z6vKDSV9nOfUCeVJZkuTyTN-ujy2Y500H2tLiR1zlT-4BS-keskj2EMEFJHg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-onyx/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-2 right-2 font-caption text-caption text-gold-glow">بهو الاستقبال</span>
+</div>
+<!-- Image 2 -->
+<div class="col-span-1 relative h-48 rounded-xl overflow-hidden cursor-pointer group gallery-trigger shadow-md active:scale-[0.98] transition-transform duration-200 ease-luxury will-change-transform" data-caption="أناقة التفاصيل والترتيبات الهندسية">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-luxury will-change-transform" data-alt="Intimate wedding table arrangement with dark basalt plates, polished gold cutlery, subtle crystal glassware, nocturnal luxury wedding atmosphere, minimal cinematic close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEyFIYQ7Hewr-IgUWgS7wZMvlLGFOwngbLD8rN8KSiujOWCOKhMhyiOmo-hSnXoKtZyMJc2ZoRW70lFlOGSBGnMoWkAXe6iO7eLZxjuvZOmc7MXhHRzS_BQTepOWtEDfw0__XLOXnc0OFDgs-4LBNpqbxFfhtFrZIOS7Cmn4oy8S2XE1hYiNKp_-KWqGr2po4QzYsLfgS_q2tPhvo0BZIFjORQC4NBTVwk8x5XCF0hpM8q8yLAiDgHVg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-onyx/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-2 right-2 font-caption text-caption text-gold-glow">التفاصيل</span>
+</div>
+<!-- Image 3 -->
+<div class="col-span-1 relative h-32 rounded-xl overflow-hidden cursor-pointer group gallery-trigger shadow-md active:scale-[0.98] transition-transform duration-200 ease-luxury will-change-transform" data-caption="المسار الملوكي تحت نجوم الليل">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-luxury will-change-transform" data-alt="Cinematic aisle decorated with refined golden geometric arches and soft diffused warm light beams against dark charcoal walls, modern upscale Arabic ceremony venue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQSew1tdo0JwaCbbwCMLlla9sUQQw2x4R9sFA4lknHgsvOQtUZHlGf2OmIGZLu56wi1fRBv0aljsfjCXVZzJNzbwTc_ubL0GilmHLnV1jdzNuhrXGKiiOZ2YYLgZs678OTymIP-7fFjXpEKDRvXSG09Do8dkjeWZvjujGXVF3PFOY46tbmZszqaaRIPlccfFxqJUjjVEj9VaoLBOdsfj65rlIX2iP6b66PS-TgdzUd_iUuHo391Nl3XQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-onyx/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-2 right-2 font-caption text-caption text-gold-glow">الممشى</span>
+</div>
+<!-- Image 4 Large -->
+<div class="col-span-2 relative h-32 rounded-xl overflow-hidden cursor-pointer group gallery-trigger shadow-md active:scale-[0.98] transition-transform duration-200 ease-luxury will-change-transform" data-caption="الأفق السماوي لعروس الصعيد">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-luxury will-change-transform" data-alt="Stunning nocturnal panorama of Minya city beside the Nile at night with glittering warm city lights reflecting on water, serene luxury cinematic tone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOpmSnkXpWwkqU7YDAcq3BbAcyofN20lxLG8QTfdg_zR2n7B4ZWIIUseO_6L3B0mMgsqEXmzT4n6n-4TFE9tg8GUu7g6x7zB9v7Oz-asRS8W4x28zUNM_bm5EnY8FtOa0fxcDpbY2rRqoP8XxL6zpSAfWHOnxffNcyICNy05x5EN_0ECuXD3eNZrVxxK5ci2r21eUasxNXWSVVpZgCZyOZTsHUl9GRULzBwPRf0mcKXHviNeDz3TkPsw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-onyx/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-2 right-2 font-caption text-caption text-gold-glow">المنيا ليلاً</span>
+</div>
+</div>
+<!-- Modal Lightbox Layer -->
+<div class="fixed inset-0 z-50 bg-night-charcoal/90 backdrop-blur-md hidden items-center justify-center p-4 transition-opacity duration-300 ease-smooth" id="lightboxModal">
+<div class="relative w-full max-w-md bg-surface-card rounded-2xl overflow-hidden shadow-2xl p-4 flex flex-col items-center border border-border-divider/50 transform transition-transform duration-300 ease-luxury scale-95" id="lightboxCard">
+<button class="absolute top-3 left-3 w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-text-primary hover:text-gold-highlight active:scale-95 transition-all" id="closeLightboxBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="w-full h-72 rounded-xl overflow-hidden my-2 bg-deep-onyx">
+<img class="w-full h-full object-cover" data-alt="Enlarged gallery preview of architectural wedding venue with warm golden lighting and modern elegant Islamic geometry" id="lightboxImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_QgPRZ6WexptSAVKMWfb7QNNEZkQCu0dLl_FR_GM1gK5yTb-F_DuB1rZOZEt9IsAaNN41frZCKcukiAyClUR83cwln_qxLTogeO8D0ZN8xBzyuWDn1CxJeAsB3aaUWIXwdp0ph1U-TsoMZ1X-4o_18BPvWFr7kEYzesrrPX2XgxfiRfCq5FI1qdkxXXKv68sk5AE5Cxlu4hl1ow1fQXRqbgRV4bYe6hsBl_ghoaA86f1X-yc5LNGplA"/>
+</div>
+<p class="font-body-sm text-body-sm text-gold-highlight mt-2 text-center" id="lightboxCaption"></p>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 6: FAQ ACCORDION ==================== -->
+<section class="flex flex-col space-y-space-md z-10">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-gold-foil text-[20px]">help_outline</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">الأسئلة الشائعة والمعلومات</h3>
+</div>
+<div class="w-full space-y-2">
+<!-- Item 1 -->
+<div class="rounded-xl bg-surface-card overflow-hidden shadow-sm border border-border-divider/30 transition-colors duration-200 hover:border-gold-foil/30">
+<button class="faq-trigger w-full flex items-center justify-between p-space-md text-right active:bg-surface-container-low transition-colors duration-180">
+<span class="font-label-md text-label-md text-text-primary">ما هو التوقيت المحدد لبدء مراسم الحفل؟</span>
+<span class="material-symbols-outlined text-gold-foil text-[20px] transition-transform duration-350 ease-luxury will-change-transform">expand_more</span>
+</button>
+<div class="faq-content hidden px-space-md pb-space-md text-text-secondary font-body-sm text-body-sm leading-relaxed transition-all duration-300 ease-smooth">
+          يبدأ استقبال السادة الضيوف ومراسم الفرح في تمام الساعة 8:00 مساءً بتوقيت جمهورية مصر العربية يوم السبت 21 نوفمبر 2026.
+        </div>
+</div>
+<!-- Item 2 -->
+<div class="rounded-xl bg-surface-card overflow-hidden shadow-sm border border-border-divider/30 transition-colors duration-200 hover:border-gold-foil/30">
+<button class="faq-trigger w-full flex items-center justify-between p-space-md text-right active:bg-surface-container-low transition-colors duration-180">
+<span class="font-label-md text-label-md text-text-primary">هل تتوفر أماكن مخصصة لانتظار السيارات؟</span>
+<span class="material-symbols-outlined text-gold-foil text-[20px] transition-transform duration-350 ease-luxury will-change-transform">expand_more</span>
+</button>
+<div class="faq-content hidden px-space-md pb-space-md text-text-secondary font-body-sm text-body-sm leading-relaxed transition-all duration-300 ease-smooth">
+          نعم، توفر قاعة جاردينيا 2 ساحات انتظار رحبة ومؤمنة مخصصة لسيارات السادة الضيوف على طريق مصر أسوان الزراعي مباشرة.
+        </div>
+</div>
+<!-- Item 3 -->
+<div class="rounded-xl bg-surface-card overflow-hidden shadow-sm border border-border-divider/30 transition-colors duration-200 hover:border-gold-foil/30">
+<button class="faq-trigger w-full flex items-center justify-between p-space-md text-right active:bg-surface-container-low transition-colors duration-180">
+<span class="font-label-md text-label-md text-text-primary">كيف أصل إلى القاعة من داخل مدينة المنيا؟</span>
+<span class="material-symbols-outlined text-gold-foil text-[20px] transition-transform duration-350 ease-luxury will-change-transform">expand_more</span>
+</button>
+<div class="faq-content hidden px-space-md pb-space-md text-text-secondary font-body-sm text-body-sm leading-relaxed transition-all duration-300 ease-smooth">
+          القاعة تقع في نطاق قسم ثان المنيا على الطريق الزراعي الرئيسي، ويمكنك اتباع الرابط المباشر للخرائط المرفق في هذه الدعوة بدقة عالية.
+        </div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 7: LUXURY FOOTER & WHATSAPP ==================== -->
+<footer class="relative w-full rounded-2xl bg-surface-card p-space-lg flex flex-col items-center text-center space-y-space-md shadow-2xl z-10 mb-space-lg border border-border-divider/40">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-gold-highlight transform transition-transform duration-300 ease-luxury hover:scale-105">
+<span class="material-symbols-outlined text-[20px]">mark_email_read</span>
+</div>
+<div class="space-y-1 max-w-xs">
+<h4 class="font-headline-sm text-headline-sm text-text-primary">حضوركم شرفٌ يكتمل به أُنسنا</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+        يسعدنا تواصلكم وتهانيكم المباركة بهذه المناسبة السعيدة
+      </p>
+</div>
+<!-- WhatsApp Dynamic Message Link -->
+<a class="gold-shimmer-btn w-full flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-full bg-gradient-to-r from-gold-foil via-gold-highlight to-gold-foil text-night-charcoal font-semibold shadow-[0_6px_24px_rgba(212,175,55,0.25)] active:scale-[0.98] hover:-translate-y-[1px] transition-all duration-200 ease-luxury will-change-transform" href="https://wa.me/?text=%D8%A3%D9%84%D9%81%20%D9%85%D8%A8%D8%B1%D9%88%D9%83%20%D9%84%D9%84%D8%B9%D8%B1%D9%8A%D8%B3%20%D9%85%D8%AD%D9%85%D8%AF%20%D9%88%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D8%A9%20%D8%B3%D8%A7%D8%B1%D8%A9%D8%8C%20%D8%A8%D8%A7%D8%B1%D9%83%20%D8%A7%D9%84%D9%84%D9%87%20%D9%84%D9%83%D9%85%D8%A7%20%D9%88%D8%AC%D9%85%D8%B9%20%D8%A8%D9%8A%D9%86%D9%83%D9%85%D8%A7%20%D9%81%D9%8A%20%D8%AE%D9%8A%D8%B1" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span class="font-label-md text-label-md">إرسال تهنئة عبر واتساب</span>
+</a>
+<!-- Monogram Signature -->
+<div class="pt-space-xs flex flex-col items-center space-y-1">
+<div class="flex items-center gap-2 text-gold-foil text-caption font-caption">
+<span>محمد</span>
+<span>•</span>
+<span>سارة</span>
+</div>
+<span class="text-caption font-caption text-text-secondary opacity-60">نوفمبر ٢٠٢٦ • المنيا</span>
+</div>
+</footer>
+</div>
+<!-- Client-side Interactive Script -->
+<script>
+  (function initWeddingInteractiveExperience() {
+    // 1. Precise Countdown Engine to Nov 21, 2026, 20:00:00 (Cairo Time UTC+2)
+    const targetEventTime = new Date("2026-11-21T20:00:00+02:00").getTime();
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetEventTime - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        const dEl = document.getElementById("cd-days");
+        const hEl = document.getElementById("cd-hours");
+        const mEl = document.getElementById("cd-minutes");
+        const sEl = document.getElementById("cd-seconds");
+
+        if (dEl) dEl.innerText = days < 10 ? "0" + days : days;
+        if (hEl) hEl.innerText = hours < 10 ? "0" + hours : hours;
+        if (mEl) mEl.innerText = minutes < 10 ? "0" + minutes : minutes;
+        if (sEl) sEl.innerText = seconds < 10 ? "0" + seconds : seconds;
+      }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // 2. Carousel Indicator & Card Active Elevation Sync
+    const carousel = document.getElementById("storyCarousel");
+    const dots = document.querySelectorAll("#story-indicators .story-dot");
+    const storyCards = document.querySelectorAll(".story-card");
+
+    if (carousel && dots.length) {
+      let scrollTimeout;
+      carousel.addEventListener("scroll", () => {
+        if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
+        scrollTimeout = requestAnimationFrame(() => {
+          const scrollLeft = Math.abs(carousel.scrollLeft);
+          const cardWidth = carousel.firstElementChild ? carousel.firstElementChild.offsetWidth : 300;
+          const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), dots.length - 1);
+
+          dots.forEach((dot, idx) => {
+            if (idx === activeIndex) {
+              dot.className = "story-dot w-6 h-1 rounded-full bg-gold-foil transition-all duration-300 ease-luxury";
+            } else {
+              dot.className = "story-dot w-2 h-1 rounded-full bg-surface-container-high transition-all duration-300 ease-luxury";
+            }
+          });
+
+          // Elegant Card Scale & Opacity Focus Transition
+          storyCards.forEach((card, idx) => {
+            if (idx === activeIndex) {
+              card.classList.remove("opacity-90", "scale-[0.98]");
+              card.classList.add("opacity-100", "scale-100", "border-gold-foil/30");
+            } else {
+              card.classList.remove("opacity-100", "scale-100", "border-gold-foil/30");
+              card.classList.add("opacity-90", "scale-[0.98]");
+            }
+          });
+        });
+      }, { passive: true });
+    }
+
+    // 3. YouTube Audio Controller (qnJrE0X_tqE)
+    let isPlaying = false;
+    const audioBtn = document.getElementById("audioControlBtn");
+    const audioIcon = document.getElementById("audioIcon");
+    const audioLabel = document.getElementById("audioLabel");
+    const shellMusicToggle = document.getElementById("musicToggle");
+
+    // Load YouTube IFrame API dynamically
+    if (!window.YT) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+
+    let ytPlayer = null;
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player("yt-audio-player", {
+        height: "0",
+        width: "0",
+        videoId: "qnJrE0X_tqE",
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          loop: 1,
+          playlist: "qnJrE0X_tqE"
+        }
+      });
+    };
+
+    function togglePlayback() {
+      if (!ytPlayer || typeof ytPlayer.playVideo !== "function") return;
+      if (!isPlaying) {
+        ytPlayer.playVideo();
+        isPlaying = true;
+        if (audioIcon) audioIcon.innerText = "pause_circle";
+        if (audioLabel) audioLabel.innerText = "إيقاف النغم";
+        if (shellMusicToggle) shellMusicToggle.classList.add("animate-spin");
+      } else {
+        ytPlayer.pauseVideo();
+        isPlaying = false;
+        if (audioIcon) audioIcon.innerText = "play_circle";
+        if (audioLabel) audioLabel.innerText = "تشغيل النغم";
+        if (shellMusicToggle) shellMusicToggle.classList.remove("animate-spin");
+      }
+    }
+
+    if (audioBtn) audioBtn.addEventListener("click", togglePlayback);
+    if (shellMusicToggle) shellMusicToggle.addEventListener("click", togglePlayback);
+
+    // 4. Copy Coordinates to Clipboard with micro-feedback
+    const copyBtn = document.getElementById("copyCoordsBtn");
+    const copyIcon = document.getElementById("copyIcon");
+    const copyLabel = document.getElementById("copyLabel");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", () => {
+        const coords = "28.100296, 30.748982";
+        navigator.clipboard.writeText(coords).then(() => {
+          if (copyLabel) copyLabel.innerText = "تم النسخ!";
+          if (copyIcon) {
+            copyIcon.innerText = "check_circle";
+            copyIcon.classList.add("text-feedback-success");
+            copyIcon.classList.remove("text-gold-foil");
+          }
+          setTimeout(() => {
+            if (copyLabel) copyLabel.innerText = "نسخ الإحداثيات";
+            if (copyIcon) {
+              copyIcon.innerText = "content_copy";
+              copyIcon.classList.remove("text-feedback-success");
+              copyIcon.classList.add("text-gold-foil");
+            }
+          }, 2200);
+        });
+      });
+    }
+
+    // 5. Lightbox Modal with smooth scale & fade reveal
+    const lightboxModal = document.getElementById("lightboxModal");
+    const lightboxCard = document.getElementById("lightboxCard");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const closeLightboxBtn = document.getElementById("closeLightboxBtn");
+    const triggers = document.querySelectorAll(".gallery-trigger");
+
+    function openLightbox(img, caption) {
+      if (lightboxImg && img) {
+        lightboxImg.src = img.src;
+        if (img.getAttribute("data-alt")) {
+          lightboxImg.setAttribute("data-alt", img.getAttribute("data-alt"));
+        }
+      }
+      if (lightboxCaption && caption) lightboxCaption.innerText = caption;
+      if (lightboxModal) {
+        lightboxModal.classList.remove("hidden");
+        lightboxModal.classList.add("flex");
+        // Trigger reveal frame
+        requestAnimationFrame(() => {
+          lightboxModal.classList.remove("opacity-0");
+          if (lightboxCard) {
+            lightboxCard.classList.remove("scale-95");
+            lightboxCard.classList.add("scale-100");
+          }
+        });
+      }
+    }
+
+    function closeLightbox() {
+      if (lightboxModal) {
+        if (lightboxCard) {
+          lightboxCard.classList.remove("scale-100");
+          lightboxCard.classList.add("scale-95");
+        }
+        lightboxModal.classList.add("opacity-0");
+        setTimeout(() => {
+          lightboxModal.classList.add("hidden");
+          lightboxModal.classList.remove("flex");
+        }, 250);
+      }
+    }
+
+    triggers.forEach(card => {
+      card.addEventListener("click", () => {
+        const img = card.querySelector("img");
+        const caption = card.getAttribute("data-caption");
+        openLightbox(img, caption);
+      });
+    });
+
+    if (closeLightboxBtn) closeLightboxBtn.addEventListener("click", closeLightbox);
+    if (lightboxModal) {
+      lightboxModal.addEventListener("click", (e) => {
+        if (e.target === lightboxModal) closeLightbox();
+      });
+    }
+
+    // 6. Luxury Accordion FAQ with smooth cubic-bezier rotation
+    const faqButtons = document.querySelectorAll(".faq-trigger");
+    faqButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector(".material-symbols-outlined");
+        const isCurrentlyHidden = content.classList.contains("hidden");
+
+        // Close all other FAQs
+        document.querySelectorAll(".faq-content").forEach(el => el.classList.add("hidden"));
+        document.querySelectorAll(".faq-trigger .material-symbols-outlined").forEach(el => {
+          el.style.transform = "rotate(0deg)";
+        });
+
+        if (isCurrentlyHidden) {
+          content.classList.remove("hidden");
+          if (icon) icon.style.transform = "rotate(180deg)";
+        }
+      });
+    });
+
+    // 7. Scroll Progress Bar update (Smooth & lightweight)
+    const progressBar = document.getElementById("scrollProgress");
+    window.addEventListener("scroll", () => {
+      if (!progressBar) return;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight > 0) {
+        const percent = Math.min(100, Math.max(15, (scrollTop / scrollHeight) * 100));
+        progressBar.style.width = percent + "%";
+      }
+    }, { passive: true });
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-deep-onyx/85 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.45)] border-t border-border-divider/30" data-active-classes="text-gold-highlight font-label-md"><div class="flex justify-around items-center h-16 max-w-[560px] mx-auto px-margin-mobile"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 w-14 h-14 text-gold-highlight font-label-md active:scale-95 transition-all duration-200 ease-luxury" data-path="invitation-overview" href="#"><span class="material-symbols-outlined text-[22px]">diamond</span><span class="font-caption text-caption">الدعوة</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 text-text-secondary hover:text-gold-highlight active:scale-95 transition-all duration-200 ease-luxury" data-path="love-story" href="#"><span class="material-symbols-outlined text-[22px]">auto_stories</span><span class="font-caption text-caption">قصتنا</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 text-text-secondary hover:text-gold-highlight active:scale-95 transition-all duration-200 ease-luxury" data-path="event-program" href="#"><span class="material-symbols-outlined text-[22px]">calendar_today</span><span class="font-caption text-caption">البرنامج</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 text-text-secondary hover:text-gold-highlight active:scale-95 transition-all duration-200 ease-luxury" data-path="venue-location" href="#"><span class="material-symbols-outlined text-[22px]">near_me</span><span class="font-caption text-caption">الموقع</span></a></div></nav></body></html>
